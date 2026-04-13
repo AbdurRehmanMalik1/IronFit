@@ -1,6 +1,5 @@
 package com.workoutapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
