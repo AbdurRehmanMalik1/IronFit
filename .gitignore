@@ -1,0 +1,45 @@
+# =====================================================
+# Android Studio / Kotlin / Java — .gitignore
+# =====================================================
+
+# --------------------- idea -----------------------
+*.iml
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# --------------------- gradle ---------------------
+.gradle
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# --------------------- local config ---------------
+local.properties
+keystore.properties
+
+# --------------------- secrets / api keys ---------
+*.jks
+*.keystore
+google-services.json
+secrets.properties
+apikeys.properties
+*.env
+
+# --------------------- OS generated ---------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --------------------- build output ---------------
+*.apk
+*.aab
+*.dex
+*.class
+out/
+bin/
+gen/

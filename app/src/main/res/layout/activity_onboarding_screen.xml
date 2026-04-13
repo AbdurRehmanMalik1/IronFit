@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnboardingActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:contentDescription="@string/arc_image"
+            android:rotation="180"
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ellipse_228"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:contentDescription="@string/arc_image"
+            android:rotation="180"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ellipse_228"
+            android:scaleType="fitXY"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:text="@string/stay_on_top_of_nyour_health"/>
+
+            <com.ncorti.slidetoact.SlideToActView
+                android:id="@+id/welcome_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:area_margin="4dp"
+                app:inner_color="?attr/colorOnPrimary"
+                app:outer_color="?attr/colorPrimary"
+                app:slider_height="72dp"
+                app:slider_icon_color="?attr/colorPrimary"
+                app:text="Get Started"
+                app:text_style="bold"
+                app:text_size="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

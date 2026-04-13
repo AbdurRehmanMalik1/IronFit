@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.WorkoutApp" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary Brand Color -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+
+        <!-- Optional but recommended -->
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
+    </style>
+
+    <style name="Theme.WorkoutApp" parent="Base.Theme.WorkoutApp" />
+
+    <style name="Theme.WorkoutApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WorkoutApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WorkoutApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
