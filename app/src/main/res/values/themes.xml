@@ -10,6 +10,10 @@
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
 
+        <item name="colorSurfaceVariant">@color/color_surface_variant</item>
+
+        <item name="subtitle">@color/subtitle</item>
+
     </style>
 
     <style name="Theme.WorkoutApp" parent="Base.Theme.WorkoutApp" />

@@ -1,20 +1,13 @@
-package com.workoutapp
+package com.workoutapp.activities
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.workoutapp.R
 import com.workoutapp.adapters.MainTabAdapter
 import com.workoutapp.models.BottomTab
 import com.workoutapp.ui.custom.CustomBottomBar

@@ -1,5 +1,6 @@
-package com.workoutapp
+package com.workoutapp.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,33 +8,33 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.ncorti.slidetoact.SlideToActView
+import com.workoutapp.R
+import com.workoutapp.prefs.AppPrefs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class OnboardingActivity : AppCompatActivity() {
+@SuppressLint("CustomSplashScreen")
+class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_onboarding_screen)
+        setContentView(R.layout.activity_splash_screen)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val isOnboarded = AppPrefs.isOnboarded(this)
 
-        val welcomeSlider = findViewById<SlideToActView>(R.id.welcome_slider);
-
-        welcomeSlider.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
-            override fun onSlideComplete(view: SlideToActView) {
-                lifecycleScope.launch {
-                    delay(700)
-                    val intent = Intent(this@OnboardingActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+        lifecycleScope.launch {
+            delay(2000)
+            if (isOnboarded) {
+                startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+                finish()
             }
         }
-
     }
 }

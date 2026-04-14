@@ -21,5 +21,13 @@
     <string name="calendar">Calendar</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
+    <string name="ironfit">IronFit</string>
+    <string name="app_logo">App Logo</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="last_updated_on">Last Updated On</string>
+    <string name="accept_and_continue">Accept and Continue</string>
+    <string name="scroll_to_bottom">Scroll To Bottom</string>
+    <string name="scroll_to_top">Scroll To Top</string>
+    <string name="i_agree_to_the_terms_amp_conditions"><![CDATA[I agree to the Terms & Conditions]]></string>
 
 </resources>
