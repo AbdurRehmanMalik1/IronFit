@@ -257,21 +257,21 @@
 
 
                 <com.google.android.material.checkbox.MaterialCheckBox
-                    android:checked="false"
                     android:id="@+id/checkboxAgree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="?attr/colorPrimaryContainer"
-                    android:text="@string/i_agree_to_the_terms_amp_conditions"/>
+                    android:checked="false"
+                    android:text="@string/i_agree_to_the_terms_amp_conditions"
+                    app:buttonTint="?attr/colorPrimaryContainer" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:enabled="false"
                     android:id="@+id/btnAgree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="100dp"
                     android:backgroundTint="@color/btn_primary_container_selector"
+                    android:enabled="false"
                     android:padding="12dp"
                     android:text="@string/accept_and_continue" />
 

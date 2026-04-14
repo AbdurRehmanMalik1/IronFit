@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SplashScreenActivity"
-    android:background="?attr/colorOnPrimary">
+    android:background="?attr/colorOnPrimary"
+    tools:context=".activities.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/ellipseTop"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:src="@drawable/ellipse_228"
         android:contentDescription="@string/arc_image"
         android:rotation="180"
         android:scaleType="fitXY"
+        android:src="@drawable/ellipse_228"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/llSplashCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/llSplashCenter"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/llSplashCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -40,29 +40,29 @@
             android:layout_height="180dp"
             android:contentDescription="@string/app_logo"
             android:src="@drawable/ic_app_logo"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <!-- App Title -->
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/ironfit"
-            android:textSize="34sp"
-            android:textStyle="bold"
             android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="12dp" />
+            android:textSize="34sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/ellipseBottom"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:src="@drawable/ellipse_228"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/llSplashCenter"
+        android:src="@drawable/ellipse_228"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/llSplashCenter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

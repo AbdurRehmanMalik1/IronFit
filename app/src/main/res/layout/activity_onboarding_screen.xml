@@ -5,45 +5,50 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.OnboardingActivity"
-    android:background="?attr/colorOnPrimary">
+    android:background="?attr/colorOnPrimary"
+    tools:context=".activities.OnboardingActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <ImageView
-            android:contentDescription="@string/arc_image"
-            android:rotation="180"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_marginTop="100dp"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/ellipse_228"
-            android:scaleType="fitXY"/>
-        <ImageView
             android:contentDescription="@string/arc_image"
             android:rotation="180"
+            android:scaleType="fitXY"
+            android:src="@drawable/ellipse_228" />
+
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:src="@drawable/ellipse_228"
-            android:scaleType="fitXY"/>
+            android:contentDescription="@string/arc_image"
+            android:rotation="180"
+            android:scaleType="fitXY"
+            android:src="@drawable/ellipse_228" />
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:orientation="vertical">
+
             <View
                 android:layout_width="1dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/stay_on_top_of_nyour_health"
                 android:textAlignment="center"
                 android:textColor="?attr/colorPrimary"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:text="@string/stay_on_top_of_nyour_health"/>
+                android:textStyle="bold" />
 
             <com.ncorti.slidetoact.SlideToActView
                 android:id="@+id/welcome_slider"
@@ -56,8 +61,8 @@
                 app:slider_height="72dp"
                 app:slider_icon_color="?attr/colorPrimary"
                 app:text="Get Started"
-                app:text_style="bold"
-                app:text_size="16sp" />
+                app:text_size="16sp"
+                app:text_style="bold" />
         </LinearLayout>
     </LinearLayout>
 
