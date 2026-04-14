@@ -7,21 +7,24 @@
     android:gravity="center"
     android:orientation="horizontal"
     android:background="@drawable/tab_bg_selector"
-    android:padding="5dp">
+    android:paddingHorizontal="0dp"
+    android:paddingVertical="7dp">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="@string/tab_icon"
         app:tint="@color/white" />
 
     <TextView
         android:id="@+id/text"
-        android:textSize="13sp"
-        android:layout_width="53dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="11sp"
         android:text="@string/home"
         android:textColor="@color/white"
         android:layout_marginStart="4dp"
-        android:visibility="gone"/>
+        android:maxLines="1"
+        android:ellipsize="start"/>
 </LinearLayout>
