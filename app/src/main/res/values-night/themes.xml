@@ -1,15 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Base.Theme.WorkoutApp" parent="Theme.Material3.Dark.NoActionBar">
+
+        <!-- Primary -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorOnPrimary">@color/on_primary</item>
+
+        <!-- Containers -->
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
+        <!-- Surface -->
+        <item name="colorSurfaceVariant">@color/color_surface_variant</item>
+
+        <!-- Optional custom subtitle (ONLY if attrs.xml exists) -->
+        <item name="subtitle">@color/subtitle</item>
+
     </style>
 
     <style name="Theme.WorkoutApp" parent="Base.Theme.WorkoutApp" />
 
-    <style name="Theme.WorkoutApp.NoActionBar">
+    <style name="Theme.WorkoutApp.NoActionBar" parent="Theme.WorkoutApp">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -17,4 +28,5 @@
     <style name="Theme.WorkoutApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.WorkoutApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
