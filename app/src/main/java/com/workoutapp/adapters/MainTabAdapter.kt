@@ -11,8 +11,7 @@ import com.workoutapp.fragments.ProgressFragment
 
 class MainTabAdapter : FragmentStateAdapter {
 
-    constructor(activity: FragmentActivity) : super(activity) {
-    }
+    constructor(activity: FragmentActivity) : super(activity)
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {

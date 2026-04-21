@@ -6,12 +6,12 @@
     android:viewportHeight="160"
     tools:ignore="VectorRaster">
 
-  <path
-      android:pathData="M187,-260
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M187,-260
                           m-360,0
                           a360,360 0,1 1,720 0
                           a360,360 0,1 1,-720 0"
-      android:fillColor="@android:color/transparent"
-      android:strokeColor="#12005F"
-      android:strokeWidth="60"/>
+        android:strokeWidth="60"
+        android:strokeColor="#12005F" />
 </vector>

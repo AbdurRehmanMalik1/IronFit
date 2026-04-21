@@ -23,7 +23,7 @@ class OnboardingActivity : AppCompatActivity() {
             insets
         }
 
-        val welcomeSlider = findViewById<SlideToActView>(R.id.welcome_slider);
+        val welcomeSlider = findViewById<SlideToActView>(R.id.welcome_slider)
 
         welcomeSlider.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
             override fun onSlideComplete(view: SlideToActView) {
