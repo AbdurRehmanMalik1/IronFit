@@ -10,7 +10,8 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="16dp" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -20,16 +21,6 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
-
-        <!--        <com.google.android.material.tabs.TabLayout-->
-        <!--            android:id="@+id/tlMain"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@android:color/white"-->
-        <!--            app:tabMode="fixed"-->
-        <!--            app:tabGravity="fill"-->
-        <!--            app:tabIndicatorHeight="0dp"-->
-        <!--            app:tabBackground="@android:color/transparent"/>-->
 
         <LinearLayout
             android:id="@+id/bottomBar"

@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.workoutapp.R
 import com.workoutapp.adapters.MainTabAdapter
-import com.workoutapp.models.BottomTab
 import com.workoutapp.ui.custom.CustomBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -32,13 +32,14 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.adapter = MainTabAdapter(this@MainActivity)
 
-        val tabs = listOf(
-            BottomTab(R.drawable.ic_home, "Workout"),
-            BottomTab(R.drawable.ic_history, "History"),
-            BottomTab(R.drawable.ic_progress, "Progress"),
-            BottomTab(R.drawable.ic_calendar, "Calendar"),
-            BottomTab(R.drawable.ic_account_circle, "Profile")
-        )
-        CustomBottomBar(this, bottomBar, viewPager, tabs).setup()
+        CustomBottomBar(this, bottomBar, viewPager, provideTabs()).setup()
     }
+
+    private fun provideTabs(): List<CustomBottomBar.Tab> = listOf(
+        CustomBottomBar.Tab(R.drawable.ic_home, "Home"),
+        CustomBottomBar.Tab(R.drawable.ic_history, "History"),
+        CustomBottomBar.Tab(R.drawable.ic_progress, "Progress"),
+        CustomBottomBar.Tab(R.drawable.ic_calendar, "Calendar"),
+        CustomBottomBar.Tab(R.drawable.ic_account_circle, "Profile")
+    )
 }

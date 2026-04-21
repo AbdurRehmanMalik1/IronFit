@@ -8,14 +8,18 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.workoutapp.R
-import com.workoutapp.models.BottomTab
 
 class CustomBottomBar(
     private val activity: Activity,
     private val bottomBar: LinearLayout,
     private val viewPager: ViewPager2,
-    private val tabs: List<BottomTab>
+    private val tabs: List<Tab>
 ) {
+
+    companion object class Tab(
+        val icon: Int,
+        val title: String
+    )
 
     fun setup() {
         setupBottomBar()

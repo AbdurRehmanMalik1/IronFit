@@ -38,7 +38,7 @@ class TermsActivity : AppCompatActivity() {
             btnAgree.isEnabled = checked
         }
         btnAgree.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this@TermsActivity, MainActivity::class.java))
             finish()
         }
 
