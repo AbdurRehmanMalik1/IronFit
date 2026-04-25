@@ -6,13 +6,17 @@
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorOnPrimary">@color/on_primary</item>
         <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
 
+        <item name="background">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
 
         <!-- Optional but recommended -->
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
 
         <item name="colorSurfaceVariant">@color/color_surface_variant</item>
+        <item name="colorSurfaceBright">@color/color_surface_variant_bright</item>
         <item name="subtitle">@color/subtitle</item>
 
     </style>

@@ -28,5 +28,17 @@
     <string name="scroll_to_bottom">Scroll To Bottom</string>
     <string name="scroll_to_top">Scroll To Top</string>
     <string name="i_agree_to_the_terms_amp_conditions"><![CDATA[I agree to the Terms & Conditions]]></string>
+    <string name="steps">Steps</string>
+    <string name="walk_amp_run_activity"><![CDATA[Walk & Run Activity]]></string>
+    <string name="step">Step</string>
+    <string name="number_8792">8792</string>
+    <string name="_1_week">1 Week</string>
+    <string name="todo">TODO</string>
+    <string name="change">Change</string>
+    <string name="yesterday_distance">Yesterday Distance</string>
+    <string name="today_distance">Today Distance</string>
+    <string name="your_metrics">Your Metrics</string>
+    <string name="see_all">see all</string>
+    <string name="suggested_workouts">Suggested Workouts</string>
 
 </resources>
