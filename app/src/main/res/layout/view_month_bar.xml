@@ -11,14 +11,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/colorSecondary"/>
+            android:background="@drawable/bar_background" />
 
         <View
             android:id="@+id/barValue"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:background="?attr/colorPrimary"/>
+            android:background="@drawable/bar_fill" />
+
     </FrameLayout>
 
     <TextView
