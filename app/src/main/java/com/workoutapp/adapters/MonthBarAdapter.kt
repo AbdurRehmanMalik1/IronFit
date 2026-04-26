@@ -7,14 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.workoutapp.R
 
-class MonthBarAdapter(val data: List<Int>) :
-    RecyclerView.Adapter<MonthBarAdapter.ViewHolder>() {
+class MonthBarAdapter(val data: List<Int>) : RecyclerView.Adapter<MonthBarAdapter.ViewHolder>() {
 
-    val months = listOf("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+    val months =
+        listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_month_bar, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_month_bar, parent, false)
         return ViewHolder(view)
     }
 

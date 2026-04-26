@@ -158,9 +158,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-                    tools:itemCount="3"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/view_suggest_workout_item" />
             </LinearLayout>
         </LinearLayout>

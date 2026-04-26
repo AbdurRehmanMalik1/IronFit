@@ -39,6 +39,5 @@ class HistoryFragment : Fragment() {
 
         rvStepTime.adapter = stepsTimeAdapter
 
-
     }
 }

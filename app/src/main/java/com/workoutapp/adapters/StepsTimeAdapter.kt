@@ -20,7 +20,6 @@ class StepsTimeAdapter(
         fun bind(text: String, position: Int) {
             btn.text = text
 
-            // ✔ SINGLE click listener (ONLY HERE)
             btn.setOnClickListener {
                 val pos = bindingAdapterPosition
                 if (pos == RecyclerView.NO_POSITION) return@setOnClickListener

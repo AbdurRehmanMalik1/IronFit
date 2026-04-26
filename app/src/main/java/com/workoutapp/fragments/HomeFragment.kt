@@ -19,9 +19,6 @@ import com.workoutapp.models.MetricUI
 import com.workoutapp.models.WorkoutUI
 
 class HomeFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +58,7 @@ class HomeFragment : Fragment() {
             WorkoutUI("Running", "Burn fat and boost endurance with a steady run."),
             WorkoutUI("Biking", "Strengthen your legs and improve stamina, indoors or out.")
         )
-        val rvSuggested: RecyclerView = view.findViewById(R.id.rvSuggestWorkout) // Ensure this ID matches your XML
-        rvSuggested.layoutManager = LinearLayoutManager(context)
+        val rvSuggested = view.findViewById<RecyclerView>(R.id.rvSuggestWorkout)
         rvSuggested.adapter = SuggestedWorkoutAdapter(workoutData) { workout -> }
 
 
