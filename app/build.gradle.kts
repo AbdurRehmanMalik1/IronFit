@@ -9,14 +9,17 @@ android {
             minorApiLevel = 1
         }
     }
-
     defaultConfig {
         applicationId = "com.workoutapp"
         minSdk = 33
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"http://10.0.2.2:3000/\""
+        )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -52,4 +56,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.slidetoact)
     implementation(libs.flexbox)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp.urlconnection)
 }

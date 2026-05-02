@@ -32,6 +32,9 @@ export class AuthController {
 
   @Get('me')
   async me(@Req() req: Request) {
+
+    console.log(req.session)
+
     if (!req.session.userId) {
       throw new UnauthorizedException('Not authenticated.');
     }

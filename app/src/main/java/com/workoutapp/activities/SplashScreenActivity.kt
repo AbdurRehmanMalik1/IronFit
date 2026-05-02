@@ -3,12 +3,15 @@ package com.workoutapp.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.workoutapp.R
+import com.workoutapp.api.ApiProvider
+import com.workoutapp.api.RetrofitInstance
 import com.workoutapp.prefs.AppPrefs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,22 +27,31 @@ class SplashScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val isOnboarded = AppPrefs.isOnboarded(this)
-        val isLoggedIn = AppPrefs.isLoggedIn(this)
-        val isFirstLaunch = AppPrefs.isFirstLaunch(this)
+        val api = ApiProvider.getInstance(this).api
 
         lifecycleScope.launch {
             delay(2000)
+            try {
+                val response = api.me()
+                Log.d("SPLASH", "Response: ${response.code()} ${response.message()}")
+
+                if (response.isSuccessful) {
+                    startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+                    finish()
+                    return@launch
+                }
+            } catch (e: Exception) {
+                println(e)
+            }
+            val isOnboarded = AppPrefs.isOnboarded(this@SplashScreenActivity)
+            val isFirstLaunch = AppPrefs.isFirstLaunch(this@SplashScreenActivity)
+
             if (isFirstLaunch || !isOnboarded) {
                 startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
-                finish()
-            } else if (isLoggedIn) {
-                startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
-                finish()
             } else {
                 startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
-                finish()
             }
+            finish()
         }
     }
 }

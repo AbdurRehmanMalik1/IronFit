@@ -7,7 +7,10 @@ import { Pool } from 'pg';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+  });
+
   const configService = app.get(ConfigService);
 
   app.useGlobalPipes(
@@ -23,19 +26,34 @@ async function bootstrap() {
     credentials: true,
   });
 
+  // 🔥 REQUEST LOGGER
+  app.use((req: any, res: any, next: any) => {
+    const start = Date.now();
+    console.log(`➡️ ${req.method} ${req.url}`);
+
+    res.on('finish', () => {
+      const duration = Date.now() - start;
+      console.log(
+        `⬅️ ${req.method} ${req.url} ${res.statusCode} - ${duration}ms`,
+      );
+    });
+
+    next();
+  });
+
+
   const databaseUrl = configService.get<string>('DATABASE_URL');
   if (!databaseUrl) {
-    throw new Error('DATABASE_URL is missing. Add it to your .env file.');
+    throw new Error('DATABASE_URL is missing.');
   }
 
   const pgPool = new Pool({
     connectionString: databaseUrl,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    ssl: { rejectUnauthorized: false },
   });
 
   const PgStore = connectPgSimple(session);
+
   app.use(
     session({
       name: 'workout.sid',
@@ -57,6 +75,13 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(configService.get<number>('PORT') ?? 3000);
+    // 🔥 SESSION LOGGER
+  app.use((req: any, _res: any, next: any) => {
+    console.log('🧠 Session ID:', req.sessionID);
+    console.log('👤 Session:', req.session);
+    next();
+  });
+
+  await app.listen(configService.get<number>('PORT') ?? 3000, '0.0.0.0');
 }
 void bootstrap();

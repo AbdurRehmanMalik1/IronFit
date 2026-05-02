@@ -8,10 +8,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.workoutapp.R
+import com.workoutapp.api.AuthRepository
 import com.workoutapp.prefs.AppPrefs
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,35 +39,57 @@ class LoginActivity : AppCompatActivity() {
             etEmail.setText(savedEmail)
         }
 
+        val repository = AuthRepository(this)
+
         btnLogin.setOnClickListener {
+
             val email = etEmail.text?.toString()?.trim().orEmpty()
             val password = etPassword.text?.toString().orEmpty()
 
             if (email.isBlank() || password.isBlank()) {
-                Toast.makeText(this, getString(R.string.please_fill_all_fields), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (AppPrefs.getSavedEmail(this).isBlank()) {
-                Toast.makeText(this, getString(R.string.please_sign_up_first), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            lifecycleScope.launch {
+                try {
 
-            if (!AppPrefs.isTermsAccepted(this)) {
-                Toast.makeText(this, getString(R.string.terms_not_accepted), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                    val response = repository.login(email, password)
 
-            if (!AppPrefs.isValidCredentials(this, email, password)) {
-                Toast.makeText(this, getString(R.string.invalid_login_credentials), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                    if (response.isSuccessful) {
 
-            AppPrefs.setLoggedIn(this, true)
-            startActivity(Intent(this, MainActivity::class.java))
-            finishAffinity()
+                        val body = response.body()
+
+                        Toast.makeText(
+                            this@LoginActivity,
+                            body?.message ?: "Login successful",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        // OPTIONAL: store login state locally
+                        AppPrefs.setLoggedIn(this@LoginActivity, true)
+                        AppPrefs.saveCredentials(this@LoginActivity, email, password)
+
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finishAffinity()
+
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Login failed: ${response.errorBody()?.string()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
-
         tvSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
             finish()
