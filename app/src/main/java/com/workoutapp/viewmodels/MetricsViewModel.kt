@@ -6,7 +6,7 @@ import com.workoutapp.api.MetricsRepository
 
 import com.workoutapp.models.MetricUI
 import com.workoutapp.utils.getDrawableByName
-import com.workoutapp.viewmodels.MetricSelectUI
+import com.workoutapp.models.MetricsSelectUI
 import kotlinx.coroutines.launch
 
 class MetricsViewModel : ViewModel() {
@@ -17,7 +17,7 @@ class MetricsViewModel : ViewModel() {
     val metrics = MutableLiveData<List<MetricUI>>()
 
     // 🎯 Metrics selection screen
-    val selectableMetrics = MutableLiveData<List<MetricSelectUI>>()
+    val selectableMetrics = MutableLiveData<List<MetricsSelectUI>>()
 
     val error = MutableLiveData<String>()
 
@@ -48,7 +48,7 @@ class MetricsViewModel : ViewModel() {
                 val selectedSet = subs.map { it.metricType }.toSet()
 
                 val result = defs.map {
-                    MetricSelectUI(
+                    MetricsSelectUI(
                         type = it.type,
                         title = it.name,
                         unit = it.unit,

@@ -10,28 +10,28 @@ import androidx.core.graphics.toColorInt
 import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.workoutapp.R
-import com.workoutapp.viewmodels.MetricSelectUI
+import com.workoutapp.models.MetricsSelectUI
 
 class MetricSelectAdapter(
-    private val items: MutableList<MetricSelectUI>
-) : RecyclerView.Adapter<MetricSelectAdapter.VH>() {
+    private val items: MutableList<MetricsSelectUI>
+) : RecyclerView.Adapter<MetricSelectAdapter.ViewHolder>() {
 
-    class VH(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.tvTitle)
         val unit: TextView = view.findViewById(R.id.tvUnit)
         val icon: ImageView = view.findViewById(R.id.ivIcon)
         val container: View = view.findViewById(R.id.container)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_item_metric_select, parent, false)
-        return VH(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount() = items.size
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
         holder.title.text = item.title
@@ -53,12 +53,12 @@ class MetricSelectAdapter(
         }
     }
 
-    fun getSelected(): List<MetricSelectUI> {
+    fun getSelected(): List<MetricsSelectUI> {
         return items.filter { it.isSelected }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateSelectedMetricsData(newItems: List<MetricSelectUI>) {
+    fun updateSelectedMetricsData(newItems: List<MetricsSelectUI>) {
         println("adding items : $newItems")
         items.clear()
         items.addAll(newItems)

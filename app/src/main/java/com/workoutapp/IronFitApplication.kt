@@ -3,7 +3,7 @@ package com.workoutapp
 import android.app.Application
 import com.workoutapp.api.ApiProvider
 
-class WorkoutApp : Application() {
+class IronFitApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

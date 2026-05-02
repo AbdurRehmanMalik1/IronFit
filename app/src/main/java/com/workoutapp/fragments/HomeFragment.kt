@@ -3,26 +3,21 @@ package com.workoutapp.fragments
 import MetricsViewModel
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
 import com.workoutapp.R
 import com.workoutapp.activities.MetricsActivity
 import com.workoutapp.adapters.MetricsAdapter
 import com.workoutapp.adapters.MonthBarAdapter
 import com.workoutapp.adapters.SuggestedWorkoutAdapter
-import com.workoutapp.models.MetricUI
 import com.workoutapp.models.WorkoutUI
 
 

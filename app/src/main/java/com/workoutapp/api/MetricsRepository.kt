@@ -17,7 +17,7 @@ class MetricsRepository(
     suspend fun getSnapshot(): List<MetricUI> {
         return withContext(Dispatchers.IO) {
             val response = api.getSnapshot()
-            mapToUI(response as List<MetricResponse>)
+            mapToUI(response)
         }
     }
 

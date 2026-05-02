@@ -1,6 +1,6 @@
-package com.workoutapp.viewmodels
+package com.workoutapp.models
 
-data class MetricSelectUI(
+data class MetricsSelectUI(
     val type: String,
     val title: String,
     val unit: String,
