@@ -40,5 +40,32 @@
     <string name="your_metrics">Your Metrics</string>
     <string name="see_all">see all</string>
     <string name="suggested_workouts">Suggested Workouts</string>
+    <string name="progress_intro">Track your movement trends and weekly health goals.</string>
+    <string name="progress_banner_title">Stay Active!</string>
+    <string name="progress_banner_subtitle">See your steps and progress this week.</string>
+    <string name="progress_view_summary">View Summary →</string>
+    <string name="progress_summary_title">This Week\'s Summary</string>
+    <string name="progress_summary_placeholder">You completed most of your weekly activity target. Keep your streak active to improve consistency.</string>
+    <string name="progress_goal_placeholder">Weekly goal progress</string>
+    <string name="progress_goal_format">Weekly goal: %1$d%% complete</string>
+    <string name="progress_percent_format">%1$d%%</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="login_to_continue">Login to continue your fitness journey.</string>
+    <string name="create_account">Create account</string>
+    <string name="signup_to_start">Sign up to start tracking workouts and progress.</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="dont_have_account">Don\'t have an account? Sign up</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="please_fill_all_fields">Please fill all fields.</string>
+    <string name="passwords_do_not_match">Passwords do not match.</string>
+    <string name="account_created_complete_terms">Account created. Please confirm terms.</string>
+    <string name="please_sign_up_first">Please sign up first.</string>
+    <string name="invalid_login_credentials">Invalid email or password.</string>
+    <string name="terms_not_accepted">Please accept terms and conditions first.</string>
 
 </resources>

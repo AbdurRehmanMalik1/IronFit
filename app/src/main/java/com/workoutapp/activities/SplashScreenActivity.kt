@@ -25,14 +25,19 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
         val isOnboarded = AppPrefs.isOnboarded(this)
+        val isLoggedIn = AppPrefs.isLoggedIn(this)
+        val isFirstLaunch = AppPrefs.isFirstLaunch(this)
 
         lifecycleScope.launch {
             delay(2000)
-            if (isOnboarded) {
+            if (isFirstLaunch || !isOnboarded) {
+                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+                finish()
+            } else if (isLoggedIn) {
                 startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
                 finish()
             } else {
-                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+                startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
                 finish()
             }
         }

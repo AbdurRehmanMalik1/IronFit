@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/background">
+    android:background="?attr/background"
+    tools:context=".fragments.ProgressFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,10 +14,10 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/tvProgressTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Progress"
-            android:textColor="#000"
+            android:text="@string/progress"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -22,203 +25,127 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="12dp"
-            android:background="@android:color/darker_gray"
+            android:background="@color/gray_line"
             android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
+                android:id="@+id/tvBannerTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stay Active!"
-                android:textColor="#fff"
+                android:text="@string/progress_banner_title"
+                android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvBannerSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="See your steps and progress this week."
-                android:textColor="#fff"
+                android:text="@string/progress_banner_subtitle"
+                android:textColor="@android:color/white"
                 android:textSize="13sp" />
 
             <Button
+                android:id="@+id/btnViewSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="#2E1A8A"
-                android:text="View Summary →"
-                android:textColor="#fff" />
-
+                android:backgroundTint="?attr/colorPrimary"
+                android:text="@string/progress_view_summary"
+                android:textColor="?attr/colorOnPrimary" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvWeeklySummaryTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="This Week’s Summary"
+            android:text="@string/progress_summary_title"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <!-- Cards Grid -->
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProgressMetrics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/view_progress_metric_item" />
 
-            <!-- Row 1 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <!-- Steps -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:text="Steps"
-                        android:textColor="#777"
-                        android:textSize="12sp"
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"/>
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="56,840"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"/>
-
-                    <TextView
-                        android:text="Liters"
-                        android:textColor="#999"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <!-- Calories -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:text="Calories"
-                        android:textColor="#777"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="2.9"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:text="Kcal"
-                        android:textColor="#999"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- Row 2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <!-- Heart Rate -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:text="Heart Rate"
-                        android:textColor="#777"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="76"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:text="Bpm"
-                        android:textColor="#999"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <!-- Workout -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:text="Workout"
-                        android:textColor="#777"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="3h 20m"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:text="Steady"
-                        android:textColor="#999"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- Goal Section -->
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/progressCircle"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:max="100"
-                android:progress="60" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
 
-            <TextView
-                android:layout_marginTop="8dp"
-                android:text="60%"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progressWeeklyGoal"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:max="100"
+                            android:progress="60"
+                            app:indicatorSize="120dp"
+                            app:trackThickness="10dp"
+                            app:indicatorColor="#2E1A8A"
+                            app:trackColor="#D9D9D9"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvProgressPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="60%"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="@id/progressWeeklyGoal"
+                            app:layout_constraintBottom_toBottomOf="@id/progressWeeklyGoal"
+                            app:layout_constraintStart_toStartOf="@id/progressWeeklyGoal"
+                            app:layout_constraintEnd_toEndOf="@id/progressWeeklyGoal"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

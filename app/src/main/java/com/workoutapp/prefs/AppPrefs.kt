@@ -10,6 +10,9 @@ object AppPrefs {
     private const val KEY_ONBOARDING = "is_onboarded"
     private const val KEY_LOGGED_IN = "is_logged_in"
     private const val KEY_FIRST_LAUNCH = "is_first_launch"
+    private const val KEY_TERMS_ACCEPTED = "is_terms_accepted"
+    private const val KEY_USER_EMAIL = "user_email"
+    private const val KEY_USER_PASSWORD = "user_password"
 
     private fun prefs(context: Context) =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -40,5 +43,30 @@ object AppPrefs {
 
     fun clearAll(context: Context) {
         prefs(context).edit { clear() }
+    }
+
+    fun setTermsAccepted(context: Context, value: Boolean) {
+        prefs(context).edit { putBoolean(KEY_TERMS_ACCEPTED, value) }
+    }
+
+    fun isTermsAccepted(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_TERMS_ACCEPTED, false)
+    }
+
+    fun saveCredentials(context: Context, email: String, password: String) {
+        prefs(context).edit {
+            putString(KEY_USER_EMAIL, email)
+            putString(KEY_USER_PASSWORD, password)
+        }
+    }
+
+    fun getSavedEmail(context: Context): String {
+        return prefs(context).getString(KEY_USER_EMAIL, "") ?: ""
+    }
+
+    fun isValidCredentials(context: Context, email: String, password: String): Boolean {
+        val savedEmail = prefs(context).getString(KEY_USER_EMAIL, "") ?: ""
+        val savedPassword = prefs(context).getString(KEY_USER_PASSWORD, "") ?: ""
+        return savedEmail.equals(email, ignoreCase = true) && savedPassword == password
     }
 }

@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.ncorti.slidetoact.SlideToActView
 import com.workoutapp.R
+import com.workoutapp.prefs.AppPrefs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -29,7 +30,9 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onSlideComplete(view: SlideToActView) {
                 lifecycleScope.launch {
                     delay(700)
-                    startActivity(Intent(this@OnboardingActivity, TermsActivity::class.java))
+                    AppPrefs.setOnboarded(this@OnboardingActivity, true)
+                    AppPrefs.setFirstLaunch(this@OnboardingActivity, false)
+                    startActivity(Intent(this@OnboardingActivity, SignUpActivity::class.java))
                     finish()
                 }
             }

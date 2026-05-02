@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.workoutapp.R
+import com.workoutapp.prefs.AppPrefs
 
 class TermsActivity : AppCompatActivity() {
 
@@ -38,7 +39,8 @@ class TermsActivity : AppCompatActivity() {
             btnAgree.isEnabled = checked
         }
         btnAgree.setOnClickListener {
-            startActivity(Intent(this@TermsActivity, MainActivity::class.java))
+            AppPrefs.setTermsAccepted(this, true)
+            startActivity(Intent(this@TermsActivity, LoginActivity::class.java))
             finish()
         }
 
