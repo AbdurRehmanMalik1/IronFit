@@ -1,5 +1,6 @@
 package com.workoutapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.workoutapp.R
 import com.workoutapp.models.MetricUI
 import androidx.core.graphics.toColorInt
 
-class MetricsAdapter(private val metricUIS: List<MetricUI>) :
+class MetricsAdapter(private var metricUIS: List<MetricUI>) :
     RecyclerView.Adapter<MetricsAdapter.MetricViewHolder>() {
 
     class MetricViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -37,4 +38,9 @@ class MetricsAdapter(private val metricUIS: List<MetricUI>) :
     }
 
     override fun getItemCount() = metricUIS.size
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newData: List<MetricUI>) {
+        metricUIS = newData
+        notifyDataSetChanged()
+    }
 }

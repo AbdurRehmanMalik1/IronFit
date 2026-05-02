@@ -37,7 +37,7 @@ class SignUpActivity : AppCompatActivity() {
         val btnSignUp = findViewById<MaterialButton>(R.id.btnSignUp)
         val tvLogin = findViewById<TextView>(R.id.tvGoToLogin)
 
-        val repository = AuthRepository(this)
+        val repository = AuthRepository()
 
         btnSignUp.setOnClickListener {
 

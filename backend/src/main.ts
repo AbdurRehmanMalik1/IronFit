@@ -75,10 +75,22 @@ async function bootstrap() {
     }),
   );
 
-    // 🔥 SESSION LOGGER
-  app.use((req: any, _res: any, next: any) => {
-    console.log('🧠 Session ID:', req.sessionID);
-    console.log('👤 Session:', req.session);
+  // 🔥 SESSION LOGGER
+  // app.use((req: any, _res: any, next: any) => {
+  //   console.log('🧠 Session ID:', req.sessionID);
+  //   console.log('👤 Session:', req.session);
+  //   next();
+  // });
+  app.use((req: any, res: any, next: any) => {
+    const originalSend = res.send;
+
+    res.send = function (body: any) {
+      console.log(`📦 RESPONSE ${req.method} ${req.url}:`);
+      console.log(body);
+
+      return originalSend.call(this, body);
+    };
+
     next();
   });
 

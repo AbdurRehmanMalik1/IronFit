@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstance(context: Context) {
 
-    private val baseURL = "your url"
+    private val baseURL = "http://192.168.1.17:5000/"
 
     private val logger = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -22,10 +22,14 @@ class RetrofitInstance(context: Context) {
         .cookieJar(cookieJar)
         .build()
 
-    val api: AuthApi = Retrofit.Builder()
+    private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(AuthApi::class.java)
+
+    val authApi: AuthApi = retrofit.create(AuthApi::class.java)
+
+    val metricsApi: MetricsApi = retrofit.create(MetricsApi::class.java)
+
 }

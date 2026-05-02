@@ -1,24 +1,35 @@
 package com.workoutapp.fragments
 
+import MetricsViewModel
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.workoutapp.R
+import com.workoutapp.activities.MetricsActivity
 import com.workoutapp.adapters.MetricsAdapter
 import com.workoutapp.adapters.MonthBarAdapter
 import com.workoutapp.adapters.SuggestedWorkoutAdapter
 import com.workoutapp.models.MetricUI
 import com.workoutapp.models.WorkoutUI
 
+
 class HomeFragment : Fragment() {
+
+    private val metricsViewModel: MetricsViewModel by viewModels()
+    private lateinit var metricsAdapter: MetricsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,17 +53,49 @@ class HomeFragment : Fragment() {
 
 
         val rvMetrics: RecyclerView = view.findViewById(R.id.rvMetricsGrid)
-        rvMetrics.layoutManager = FlexboxLayoutManager(context).apply {
-            flexDirection = FlexDirection.ROW
-            flexWrap = FlexWrap.NOWRAP
-            justifyContent = JustifyContent.FLEX_START
+
+        rvMetrics.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        metricsAdapter = MetricsAdapter(emptyList())
+        rvMetrics.adapter = metricsAdapter
+
+
+        val tvEmptyMetrics = view.findViewById<TextView>(R.id.tvEmptyMetrics)
+
+
+        val tvSeeAllMetrics = view.findViewById<TextView>(R.id.tvSeeAllMetrics)
+
+        val srlHomeFragment= view.findViewById<SwipeRefreshLayout>(R.id.srlHomeFragment)
+
+        srlHomeFragment.setOnRefreshListener {
+            metricsViewModel.loadSnapshot()
         }
-        val metricUIData = listOf(
-            MetricUI("Water", "2.9", "Liters", R.drawable.ic_water_drop, "#1D1B67"),
-            MetricUI("Calories", "2.9", "Cal", R.drawable.ic_fire, "#FFB800"),
-            MetricUI("Heart Rate", "76", "Bpm", R.drawable.ic_heart_rate, "#8E5AF7")
-        )
-        rvMetrics.adapter = MetricsAdapter(metricUIData)
+
+
+        tvEmptyMetrics.setOnClickListener {
+            startActivity(Intent(context, MetricsActivity::class.java))
+        }
+
+        tvSeeAllMetrics.setOnClickListener {
+            startActivity(Intent(context, MetricsActivity::class.java))
+        }
+
+        rvMetrics.visibility = View.GONE
+        tvEmptyMetrics.visibility = View.VISIBLE
+
+        metricsViewModel.loadSnapshot()
+
+        metricsViewModel.metrics.observe(viewLifecycleOwner) { data ->
+            if (data.isNullOrEmpty()) {
+                rvMetrics.visibility = View.GONE
+                tvEmptyMetrics.visibility = View.VISIBLE
+            } else {
+                rvMetrics.visibility = View.VISIBLE
+                tvEmptyMetrics.visibility = View.GONE
+                metricsAdapter.updateData(data)
+            }
+            srlHomeFragment.isRefreshing = false
+        }
 
         val workoutData = listOf(
             WorkoutUI("Running", "Burn fat and boost endurance with a steady run."),

@@ -60,7 +60,7 @@ class ProgressFragment : Fragment() {
                 value = "3h 20m",
                 unit = "Steady",
                 iconRes = R.drawable.ic_time_workout,
-                iconColor = "#32CD32".toColorInt() // lime green
+                iconColor = "#32CD32".toColorInt()
             )
         )
 

@@ -27,7 +27,7 @@ class SplashScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val api = ApiProvider.getInstance(this).api
+        val api = ApiProvider.authApi()
 
         lifecycleScope.launch {
             delay(2000)

@@ -3,6 +3,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { MetricsModule } from './metrics/metrics.module';
+import { ActivitiesModule } from './activities/activities.module';
+import { WorkoutsModule } from './workouts/workouts.module';
+import { GoalsModule } from './goals/goals.module';
+import { ProgressModule } from './progress/progress.module';
 
 @Module({
   imports: [
@@ -22,6 +28,12 @@ import { AuthModule } from './auth/auth.module';
       }),
     }),
     AuthModule,
+    UsersModule,
+    MetricsModule,
+    ActivitiesModule,
+    WorkoutsModule,
+    GoalsModule,
+    ProgressModule,
   ],
   controllers: [AppController],
   providers: [],

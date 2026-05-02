@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             etEmail.setText(savedEmail)
         }
 
-        val repository = AuthRepository(this)
+        val repository = AuthRepository()
 
         btnLogin.setOnClickListener {
 
