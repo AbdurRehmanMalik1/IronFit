@@ -43,3 +43,53 @@ desktop.ini
 out/
 bin/
 gen/
+
+
+
+
+
+#--------------------- Nest Js Ignores ---------------
+
+
+# =====================
+# NESTJS / NODE BACKEND
+# =====================
+
+# dependencies
+/backend/node_modules/
+/backend/dist/
+/backend/build/
+
+# environment files
+/backend/.env
+/backend/.env.*
+!/backend/.env.example
+
+# logs
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/pnpm-debug.log*
+
+# runtime
+/backend/.DS_Store
+/backend/*.pid
+/backend/*.seed
+
+# NestJS cache / compiled
+/backend/.nestjs
+/backend/coverage/
+
+# IDE / editor
+/backend/.idea/
+/backend/.vscode/
+
+# =====================
+# GENERAL
+# =====================
+
+.DS_Store
+.idea/
+.vscode/
+*.log
+
