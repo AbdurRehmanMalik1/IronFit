@@ -13,4 +13,6 @@ object ApiProvider {
     fun authApi(): AuthApi = instance.authApi
 
     fun metricsApi(): MetricsApi = instance.metricsApi
+
+    fun workoutApi(): WorkoutApi = instance.workoutApi
 }

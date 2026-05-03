@@ -66,9 +66,10 @@ class LoginActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        // OPTIONAL: store login state locally
                         AppPrefs.setLoggedIn(this@LoginActivity, true)
                         AppPrefs.saveCredentials(this@LoginActivity, email, password)
+                        AppPrefs.saveUser(this@LoginActivity, body?.user)
+
 
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finishAffinity()

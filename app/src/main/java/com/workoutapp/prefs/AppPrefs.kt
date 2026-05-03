@@ -2,6 +2,10 @@ package com.workoutapp.prefs
 
 import android.content.Context
 import androidx.core.content.edit
+import com.google.gson.Gson
+import com.workoutapp.activities.SplashScreenActivity
+import com.workoutapp.models.api.response.User
+import com.workoutapp.models.api.response.UserResponse
 
 object AppPrefs {
 
@@ -13,6 +17,11 @@ object AppPrefs {
     private const val KEY_TERMS_ACCEPTED = "is_terms_accepted"
     private const val KEY_USER_EMAIL = "user_email"
     private const val KEY_USER_PASSWORD = "user_password"
+
+    private const val KEY_USER = "key_user"
+
+    private val gson = Gson()
+
 
     private fun prefs(context: Context) =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -68,5 +77,24 @@ object AppPrefs {
         val savedEmail = prefs(context).getString(KEY_USER_EMAIL, "") ?: ""
         val savedPassword = prefs(context).getString(KEY_USER_PASSWORD, "") ?: ""
         return savedEmail.equals(email, ignoreCase = true) && savedPassword == password
+    }
+
+    fun saveUser(context: Context, user: User?) {
+        prefs(context).edit {
+            if (user != null) {
+                putString(KEY_USER, gson.toJson(user))
+            } else {
+                remove(KEY_USER)
+            }
+        }
+    }
+
+    fun getUser(context: Context): User? {
+        val json = prefs(context).getString(KEY_USER, null)
+        return json?.let { gson.fromJson(it, User::class.java) }
+    }
+
+    fun clearUser(context: Context) {
+        prefs(context).edit { remove(KEY_USER) }
     }
 }

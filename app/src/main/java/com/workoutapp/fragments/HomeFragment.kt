@@ -1,24 +1,31 @@
 package com.workoutapp.fragments
 
 import MetricsViewModel
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.workoutapp.R
 import com.workoutapp.activities.MetricsActivity
+import com.workoutapp.activities.WorkoutActivity
 import com.workoutapp.adapters.MetricsAdapter
 import com.workoutapp.adapters.MonthBarAdapter
 import com.workoutapp.adapters.SuggestedWorkoutAdapter
+import com.workoutapp.api.WorkoutRepository
 import com.workoutapp.models.WorkoutUI
+import com.workoutapp.prefs.AppPrefs
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
@@ -33,9 +40,21 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val context = requireContext()
+
+        val tvGreetUser = view.findViewById<TextView>(R.id.tvGreetUser)
+
+        val user = AppPrefs.getUser(requireContext())
+
+        tvGreetUser.text = if (user != null) {
+            "Hello, ${user.name}"
+        } else {
+            "Hello"
+        }
+
         val monthChart = view.findViewById<RecyclerView>(R.id.rvMonthChart)
 
         monthChart.layoutManager =
@@ -92,13 +111,44 @@ class HomeFragment : Fragment() {
             srlHomeFragment.isRefreshing = false
         }
 
-        val workoutData = listOf(
-            WorkoutUI("Running", "Burn fat and boost endurance with a steady run."),
-            WorkoutUI("Biking", "Strengthen your legs and improve stamina, indoors or out.")
-        )
-        val rvSuggested = view.findViewById<RecyclerView>(R.id.rvSuggestWorkout)
-        rvSuggested.adapter = SuggestedWorkoutAdapter(workoutData) { workout -> }
+        val tvSeeAllWorkout = view.findViewById<TextView>(R.id.tvSeeAllWorkout)
 
+        tvSeeAllWorkout.setOnClickListener {
+            context.startActivity( Intent(context, WorkoutActivity::class.java))
+        }
+
+        lifecycleScope.launch {
+
+            val repo = WorkoutRepository()
+
+            val top = repo.getTopWorkouts(3)
+
+            val workoutData = top.map {
+                WorkoutUI(
+                    id = it.type.id,
+                    name = it.type.name,
+                    caloriesPerMinute = it.type.caloriesPerMinute ?: 0.0,
+                    description = "Most frequently done workout"
+                )
+            }
+
+            val rvSuggested = view.findViewById<RecyclerView>(R.id.rvSuggestWorkout)
+            rvSuggested.adapter = SuggestedWorkoutAdapter(workoutData) { workout ->
+                lifecycleScope.launch {
+                    try {
+                        repo.startWorkout(workout.id)
+                        val intent = Intent(requireContext(), WorkoutActivity::class.java)
+                        startActivity(intent)
+                    } catch (_: Exception) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to start workout",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
 
     }
 }

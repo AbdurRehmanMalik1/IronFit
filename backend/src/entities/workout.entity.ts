@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
 import { User } from "./user.entity";
+import { WorkoutType } from "./workout.type.entity";
 
 @Entity()
 export class Workout {
@@ -9,15 +10,21 @@ export class Workout {
   @ManyToOne(() => User)
   user!: User;
 
-  @Column()
-  title!: string; // Running, Biking
+  @ManyToOne(() => WorkoutType)
+  type!: WorkoutType;
 
-  @Column()
-  duration!: number; // in minutes
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  startTime!: Date;
 
-  @Column()
+  @Column({ type: "timestamp", nullable: true })
+  endTime?: Date;
+
+  @Column({ default: 0 })
+  durationMinutes!: number;
+
+  @Column({ default: 0 })
   caloriesBurned!: number;
 
-  @Column({ type: 'timestamp' })
-  date!: Date;
+  @Column({ default: false })
+  isActive!: boolean;
 }

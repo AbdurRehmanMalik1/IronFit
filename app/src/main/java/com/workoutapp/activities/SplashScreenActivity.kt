@@ -33,9 +33,13 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000)
             try {
                 val response = api.me()
-                Log.d("SPLASH", "Response: ${response.code()} ${response.message()}")
 
                 if (response.isSuccessful) {
+                    val user = response.body()?.user
+
+                    // 🔥 store user somewhere global
+                    AppPrefs.saveUser(this@SplashScreenActivity, user)
+
                     startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
                     finish()
                     return@launch

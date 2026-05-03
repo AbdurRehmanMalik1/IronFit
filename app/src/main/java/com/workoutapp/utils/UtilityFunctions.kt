@@ -1,5 +1,6 @@
 package com.workoutapp.utils
 
+import android.widget.TextView
 import com.workoutapp.R
 
 fun getDrawableByName(name: String): Int {
@@ -12,4 +13,5 @@ fun getDrawableByName(name: String): Int {
         else -> R.drawable.ic_app_logo
     }
 }
+
 

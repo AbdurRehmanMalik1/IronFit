@@ -13,17 +13,12 @@ class MetricsViewModel : ViewModel() {
 
     private val repository: MetricsRepository = MetricsRepository(ApiProvider.metricsApi())
 
-    // 📊 Home screen snapshot
     val metrics = MutableLiveData<List<MetricUI>>()
 
-    // 🎯 Metrics selection screen
     val selectableMetrics = MutableLiveData<List<MetricsSelectUI>>()
 
     val error = MutableLiveData<String>()
 
-    // -----------------------------
-    // 📊 SNAPSHOT (HOME SCREEN)
-    // -----------------------------
     fun loadSnapshot() {
         println("loading snap shot")
         viewModelScope.launch {
@@ -36,18 +31,15 @@ class MetricsViewModel : ViewModel() {
         }
     }
 
-    // -----------------------------
-    // 🎯 LOAD SELECTION SCREEN DATA
-    // -----------------------------
     fun loadMetricSelection() {
         viewModelScope.launch {
             try {
-                val defs = repository.getDefinitions()
+                val definitions = repository.getDefinitions()
                 val subs = repository.getSubscriptions()
 
                 val selectedSet = subs.map { it.metricType }.toSet()
 
-                val result = defs.map {
+                val result = definitions.map {
                     MetricsSelectUI(
                         type = it.type,
                         title = it.name,
@@ -67,9 +59,6 @@ class MetricsViewModel : ViewModel() {
         }
     }
 
-    // -----------------------------
-    // 💾 SAVE USER SELECTION
-    // -----------------------------
     fun saveSubscriptions(selected: List<String>) {
         viewModelScope.launch {
             try {
