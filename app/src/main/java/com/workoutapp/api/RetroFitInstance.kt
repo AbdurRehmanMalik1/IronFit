@@ -34,5 +34,7 @@ class RetrofitInstance(context: Context) {
 
     val workoutApi: WorkoutApi = retrofit.create(WorkoutApi::class.java)
 
+    val calendarApi: CalenderApi = retrofit.create(CalenderApi::class.java)
+
 
 }

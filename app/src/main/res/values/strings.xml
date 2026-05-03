@@ -23,7 +23,7 @@
     <string name="ironfit">IronFit</string>
     <string name="app_logo">App Logo</string>
     <string name="terms_of_service">Terms of Service</string>
-    <string name="last_updated_on">Last Updated On</string>
+    <string name="last_updated_on">Last Updated On 3 May 2026</string>
     <string name="accept_and_continue">Accept and Continue</string>
     <string name="scroll_to_bottom">Scroll To Bottom</string>
     <string name="scroll_to_top">Scroll To Top</string>
@@ -67,5 +67,7 @@
     <string name="please_sign_up_first">Please sign up first.</string>
     <string name="invalid_login_credentials">Invalid email or password.</string>
     <string name="terms_not_accepted">Please accept terms and conditions first.</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="your_reminders">Your Reminders</string>
 
 </resources>

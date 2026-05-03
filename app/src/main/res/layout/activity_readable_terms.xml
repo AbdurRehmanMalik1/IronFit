@@ -54,6 +54,7 @@
                 android:padding="16dp">
 
                 <LinearLayout
+                    android:paddingBottom="100dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -162,36 +163,8 @@
                         android:text="We reserve the right to update or modify these terms at any time. Continued use of the app means you accept any revised terms."
                         android:textSize="16sp"/>
 
-
-                </LinearLayout>
-                <!-- SPACE PUSH (optional) -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
                 </LinearLayout>
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkboxAgree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="@string/i_agree_to_the_terms_amp_conditions"
-                    app:buttonTint="?attr/colorPrimaryContainer" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAgree"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="100dp"
-                    android:backgroundTint="@color/btn_primary_container_selector"
-                    android:enabled="false"
-                    android:padding="12dp"
-                    android:text="@string/accept_and_continue" />
 
             </LinearLayout>
 

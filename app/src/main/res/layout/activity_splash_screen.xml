@@ -16,7 +16,6 @@
         android:rotation="180"
         android:scaleType="fitXY"
         android:src="@drawable/ellipse_228"
-
         app:layout_constraintBottom_toTopOf="@id/llSplashCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,14 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.WorkoutApp" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Base.Theme.WorkoutApp" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="colorPrimary">@color/primary_color</item>
+        <!-- Primary Brand Color -->
+        <item name="colorPrimary">#2F128C</item>
         <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
 
+        <!-- Background -->
+        <item name="background">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
+
+        <!-- Containers -->
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
 
         <item name="colorSurfaceVariant">@color/color_surface_variant</item>
+        <item name="colorSurface">@color/color_surface_variant_bright</item>
 
         <item name="subtitle">@color/subtitle</item>
 
@@ -16,13 +25,15 @@
 
     <style name="Theme.WorkoutApp" parent="Base.Theme.WorkoutApp" />
 
-    <style name="Theme.WorkoutApp.NoActionBar" parent="Theme.WorkoutApp">
+    <style name="Theme.WorkoutApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.WorkoutApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.WorkoutApp.AppBarOverlay"
+        parent="ThemeOverlay.Material3.Dark.ActionBar" />
 
-    <style name="Theme.WorkoutApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.WorkoutApp.PopupOverlay"
+        parent="ThemeOverlay.Material3.Dark" />
 
 </resources>

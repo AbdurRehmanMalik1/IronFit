@@ -12,8 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.workoutapp.R
 import com.workoutapp.api.WorkoutRepository
-import com.workoutapp.models.WorkoutUI
-import com.workoutapp.models.api.response.WorkoutResponse
 import com.workoutapp.prefs.WorkoutSessionStore
 import kotlinx.coroutines.launch
 
@@ -32,7 +30,6 @@ class WorkoutTimerFragment : Fragment(R.layout.fragment_workout_timer) {
 
     private var isResume = false
 
-    // 🔥 timer state
     private var isRunning = false
     private var elapsedSeconds = 0
     private val handler = Handler(Looper.getMainLooper())

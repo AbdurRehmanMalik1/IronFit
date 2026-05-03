@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CalendarFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="?attr/background"
+        tools:context=".fragments.CalendarFragment">
 
-</FrameLayout>
+        <!-- HEADER -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calendar"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- CALENDAR -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="?attr/colorOnBackground">
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ADD TASK SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/etTaskTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Add reminder for selected date"
+                android:padding="10dp"
+                android:background="@android:drawable/edit_text"
+                android:singleLine="true"/>
+
+            <ImageView
+                android:id="@+id/btnAddTask"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_add"
+                android:padding="10dp"
+                android:contentDescription="Add Task"
+                app:tint="?colorPrimary" />
+        </LinearLayout>
+
+        <!-- TITLE -->
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_reminders"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCalendarWorkouts"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/view_suggest_workout_item"/>
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

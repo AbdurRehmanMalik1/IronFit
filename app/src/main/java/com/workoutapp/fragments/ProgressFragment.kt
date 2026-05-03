@@ -32,7 +32,7 @@ class ProgressFragment : Fragment() {
         val weeklyMetrics = listOf(
             ProgressMetricUI(
                 title = "Steps",
-                value = "56,840",
+                value = "4200",
                 unit = "steps",
                 iconRes = R.drawable.ic_run,
                 iconColor = ContextCompat.getColor(context, R.color.primary_color)
@@ -57,7 +57,7 @@ class ProgressFragment : Fragment() {
 
             ProgressMetricUI(
                 title = "Workout",
-                value = "3h 20m",
+                value = "20m",
                 unit = "Steady",
                 iconRes = R.drawable.ic_time_workout,
                 iconColor = "#32CD32".toColorInt()

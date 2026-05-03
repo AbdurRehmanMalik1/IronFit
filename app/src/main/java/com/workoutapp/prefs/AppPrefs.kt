@@ -20,6 +20,8 @@ object AppPrefs {
 
     private const val KEY_USER = "key_user"
 
+    private const val KEY_DARK_MODE = "dark_mode"
+
     private val gson = Gson()
 
 
@@ -96,5 +98,13 @@ object AppPrefs {
 
     fun clearUser(context: Context) {
         prefs(context).edit { remove(KEY_USER) }
+    }
+
+    fun setDarkMode(context: Context, value: Boolean) {
+        prefs(context).edit { putBoolean(KEY_DARK_MODE, value) }
+    }
+
+    fun isDarkMode(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_DARK_MODE, false)
     }
 }

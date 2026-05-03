@@ -1,10 +1,9 @@
 package com.workoutapp.api
 
-import android.content.Context
 import com.workoutapp.models.api.request.LoginRequest
 import com.workoutapp.models.api.request.SignupRequest
 
-class AuthRepository() {
+class AuthRepository {
     private val api = ApiProvider.authApi()
     suspend fun signup(name: String, email: String, password: String) =
         api.signup(
@@ -17,4 +16,6 @@ class AuthRepository() {
         )
 
     suspend fun me() = api.me()
+
+    suspend fun logout() = api.logout()
 }

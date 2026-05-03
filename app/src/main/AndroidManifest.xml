@@ -16,6 +16,9 @@
         android:theme="@style/Theme.WorkoutApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ReadableTermsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.WorkoutActivity"
             android:exported="false" />
         <activity
